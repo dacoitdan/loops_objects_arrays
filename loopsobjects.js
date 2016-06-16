@@ -3,15 +3,35 @@ var amanda = {
 	ln: 'Harris',
 	age: 42,
 	gender: 'f',
-	children: ['Ben (18, M)', 'Lisa (15, F)']
+	children: [
+		{
+			name: 'Ben',
+			age: 18,
+			gender: 'M'
+		},
+		{
+			name: 'Lisa',
+			age: 15,
+			gender: 'F'
+		} ]
 }
 
 var brian = {
-	fn: 'Brain',
+	fn: 'Brian',
 	ln: 'Hall',
 	age: 36,
 	gender: 'm',
-	children: ['Eric (11, F)', 'Jenny (8, F)']
+	children: [
+		{
+			name: 'Eric',
+			age: 11,
+			gender: 'F'
+		},
+		{
+			name: 'Jenny',
+			age: 8,
+			gender: 'F'
+		} ]
 }
 
 var terrence = {
@@ -19,7 +39,22 @@ var terrence = {
 	ln: 'Smith',
 	age: 49,
 	gender: 'm',
-	children: ['David (17, M)', 'Alex (23, F)', 'Joe (25, M)']
+	children: [
+		{
+			name: 'David',
+			age: 17,
+			gender: 'M'
+		},
+		{
+			name: 'Alex',
+			age: 23,
+			gender: 'F'
+		},
+		{
+			name: 'Joe',
+			age: 25,
+			gender: 'M'
+		} ]
 }
 
 var alyssa = {
@@ -27,7 +62,17 @@ var alyssa = {
 	ln: 'Ingram',
 	age: 28,
 	gender: 'f',
-	children: ['Jamie (3, F)', 'Lori (2, F)']
+	children: [
+		{
+			name: 'Jamie',
+			age: 3,
+			gender: 'F'
+		},
+		{
+			name: 'Lori',
+			age: 2,
+			gender: 'F'
+		} ]
 }
 
 //#1
@@ -35,8 +80,12 @@ var alyssa = {
 var peeps = [amanda, brian, terrence, alyssa];
 
 for(var i = 0; i < peeps.length; i++){
-	peeps[i].children[peeps[i].children.length] = 'Bob (12, M)';
-	// console.log(peeps[i].children);
+	peeps[i].children[peeps[i].children.length] = {
+		name: 'Bob',
+		age: 12,
+		gender: 'M'
+	};
+	console.log(peeps[i].children);
 }
 
 //#2
@@ -63,11 +112,12 @@ console.log(avg);
 
 for(var i = 0; i < peeps.length; i++){
 	for(var j =0; j < peeps[i].children.length; j++){
-		console.log(peeps[i].children[j]);
+		var child = peeps[i].children[j]
+		console.log(child.name + " (" + child.age + ", " + child.gender + ")");
 	}
 }
 
-//#5
+// #5
 
 var msum = 0;
 var mnum = 0
@@ -76,11 +126,10 @@ var fnum = 0;
 
 for(var i = 0; i < peeps.length; i++){
 	for(var j =0; j < peeps[i].children.length; j++){
-		var sage = peeps[i].children[j].split(" ")[1];
-		var age = parseInt(sage.slice(1, -1));
+		var child = peeps[i].children[j];
+		var age = child.age;
 		// console.log(age);
-		var gender = peeps[i].children[j].split(" ")[2];
-		gender = gender.slice(0, gender.length-1);
+		var gender = child.gender;
 		// console.log(gender);
 
 		if(gender === 'M'){
